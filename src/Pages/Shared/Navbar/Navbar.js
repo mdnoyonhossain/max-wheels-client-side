@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Navbar = () => {
+    const { user, logOutUser } = useContext(AuthContext);
+
+    const userLogOut = () => {
+        logOutUser()
+            .then(() => { })
+            .catch(error => {
+                toast.error(error.message)
+            })
+    }
+
     return (
         <div className="navbar bg-base-100 w-11/12 m-auto">
             <div className="flex-1">
@@ -9,8 +21,16 @@ const Navbar = () => {
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal p-0">
-                    <li><Link>Item 1</Link></li>
-                    <li><Link to="/login">Login</Link></li>
+                    {
+                        user?.uid ?
+                            <>
+                                <li><Link to="/dashboard">Dashboard</Link></li>
+                                <li><button onClick={userLogOut}>Signout</button></li>
+                            </>
+                            :
+                            <li><Link to="/login">Login</Link></li>
+                    }
+
                 </ul>
             </div>
         </div>

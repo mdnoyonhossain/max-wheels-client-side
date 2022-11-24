@@ -1,5 +1,7 @@
+import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Login/SignUp";
+import PrivateRoutes from "./PrivateRoutes";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../Layouts/Main/Main");
@@ -27,6 +29,10 @@ const router = createBrowserRouter([
             },
 
         ]
+    },
+    {
+        path: '/dashboard',
+        element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>
     }
 ]);
 
