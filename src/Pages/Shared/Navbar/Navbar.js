@@ -21,6 +21,7 @@ const Navbar = () => {
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal p-0">
+                    <li><Link to="/">Home</Link></li>
                     {
                         user?.uid ?
                             <>

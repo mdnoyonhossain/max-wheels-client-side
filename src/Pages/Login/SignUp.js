@@ -6,7 +6,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const SignUp = () => {
     const { createUser, userPorfileNameUpdate, googleSignInUser } = useContext(AuthContext);
-    const {register, handleSubmit} = useForm();
+    const { register, handleSubmit } = useForm();
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -18,8 +18,9 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 userNameUpdate(data.name);
+                saveUser(data.name, data.email, data.role)
                 console.log(user);
-                navigate(from, {replace: true})
+                navigate(from, { replace: true })
                 toast.success('SignUp Successfully')
             })
             .catch(error => {
@@ -40,15 +41,32 @@ const SignUp = () => {
 
     const userGoogleSignIn = () => {
         googleSignInUser()
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-            toast.success('Google Signin Successfully')
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success('Google Signin Successfully')
+            })
+            .catch(error => {
+                toast.error(error.message)
+            })
+    }
+
+    const saveUser = (name, email, role) => {
+        const user = {name, email, role};
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
         })
-        .catch(error => {
-            toast.error(error.message)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
         })
     }
+
+
 
     return (
         <div className='flex justify-center my-20'>
@@ -57,17 +75,23 @@ const SignUp = () => {
                 <form onSubmit={handleSubmit(handleSignUp)} className="space-y-6 ng-untouched ng-pristine ng-valid">
                     <div className="space-y-1 text-sm">
                         <label htmlFor="username" className="block text-gray-800">Name</label>
-                        <input type="text" {...register('name')} style={{ border: '1px solid black' }} className="w-full px-4 py-3 rounded-md  bg-white text-gray-800 " required/>
+                        <input type="text" {...register('name')} style={{ border: '1px solid black' }} className="w-full px-4 py-3 rounded-md  bg-white text-gray-800 " required />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="username" className="block text-gray-800">Email</label>
-                        <input type="email" {...register('email')} style={{ border: '1px solid black' }} className="w-full px-4 py-3 rounded-md  bg-white text-gray-800 " required/>
+                        <input type="email" {...register('email')} style={{ border: '1px solid black' }} className="w-full px-4 py-3 rounded-md  bg-white text-gray-800 " required />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="password" className="block text-gray-800">Password</label>
-                        <input type="password" {...register('password')} style={{ border: '1px solid black' }} className="w-full px-4 py-3 rounded-md  bg-white  text-gray-800 " required/>
+                        <input type="password" {...register('password')} style={{ border: '1px solid black' }} className="w-full px-4 py-3 rounded-md  bg-white  text-gray-800 " required />
 
                     </div>
+
+                    <div className='bg-gray-100 p-3 rounded'>
+                        <label htmlFor="">Create Seller Account Checked</label><br />
+                        <input type="checkbox" value='seller' {...register('role')} className="toggle bg-red-500" />
+                    </div>
+
                     <button className="block w-full p-3 text-center rounded-sm text-white bg-accent">Register</button>
                 </form>
                 <div className="flex items-center pt-4 space-x-1">

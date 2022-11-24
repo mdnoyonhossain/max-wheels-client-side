@@ -1,4 +1,6 @@
+import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
 import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
+import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders";
 import CategoryDetails from "../Pages/Home/ProductCategory/CategoryDetails";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Login/SignUp";
@@ -38,7 +40,13 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>
+        element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <MyOrders></MyOrders>
+            }
+        ]
     }
 ]);
 
