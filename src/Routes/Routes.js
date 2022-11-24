@@ -1,4 +1,5 @@
 import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
+import CategoryDetails from "../Pages/Home/ProductCategory/CategoryDetails";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Login/SignUp";
 import PrivateRoutes from "./PrivateRoutes";
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
                 path: '/signup',
                 element: <SignUp></SignUp>
             },
+            {
+                path: '/category/:id',
+                element: <PrivateRoutes><CategoryDetails></CategoryDetails></PrivateRoutes>,
+                loader: ({params}) => fetch(`http://localhost:5000/productCategory/${params.id}`)
+            }
 
         ]
     },

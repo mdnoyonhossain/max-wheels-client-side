@@ -1,29 +1,24 @@
 import React, { useContext } from 'react';
+import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const SignUp = () => {
     const { createUser, userPorfileNameUpdate, googleSignInUser } = useContext(AuthContext);
+    const {register, handleSubmit} = useForm();
 
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname || '/';
 
-    const handleSignUp = event => {
-        event.preventDefault();
-
-        const form = event.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const password = form.password.value;
-
-        createUser(email, password)
+    const handleSignUp = data => {
+        console.log(data);
+        createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                userNameUpdate(name);
+                userNameUpdate(data.name);
                 console.log(user);
-                form.reset()
                 navigate(from, {replace: true})
                 toast.success('SignUp Successfully')
             })
@@ -59,18 +54,18 @@ const SignUp = () => {
         <div className='flex justify-center my-20'>
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl border bg-white text-black" style={{ border: '1px solid black' }}>
                 <h1 className="text-2xl font-bold text-center">SignUp</h1>
-                <form onSubmit={handleSignUp} className="space-y-6 ng-untouched ng-pristine ng-valid">
+                <form onSubmit={handleSubmit(handleSignUp)} className="space-y-6 ng-untouched ng-pristine ng-valid">
                     <div className="space-y-1 text-sm">
                         <label htmlFor="username" className="block text-gray-800">Name</label>
-                        <input type="text" name='name' style={{ border: '1px solid black' }} className="w-full px-4 py-3 rounded-md  bg-white text-gray-800 " />
+                        <input type="text" {...register('name')} style={{ border: '1px solid black' }} className="w-full px-4 py-3 rounded-md  bg-white text-gray-800 " required/>
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="username" className="block text-gray-800">Email</label>
-                        <input type="email" name='email' style={{ border: '1px solid black' }} className="w-full px-4 py-3 rounded-md  bg-white text-gray-800 " />
+                        <input type="email" {...register('email')} style={{ border: '1px solid black' }} className="w-full px-4 py-3 rounded-md  bg-white text-gray-800 " required/>
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="password" className="block text-gray-800">Password</label>
-                        <input type="password" name='password' style={{ border: '1px solid black' }} className="w-full px-4 py-3 rounded-md  bg-white  text-gray-800 " />
+                        <input type="password" {...register('password')} style={{ border: '1px solid black' }} className="w-full px-4 py-3 rounded-md  bg-white  text-gray-800 " required/>
 
                     </div>
                     <button className="block w-full p-3 text-center rounded-sm text-white bg-accent">Register</button>

@@ -45,11 +45,11 @@ const Login = () => {
                 <form onSubmit={handleSubmit(handleLogin)} className="space-y-6 ng-untouched ng-pristine ng-valid">
                     <div className="space-y-1 text-sm">
                         <label htmlFor="username" className="block text-gray-800">Email</label>
-                        <input type="email" {...register('email')} placeholder="Eamil" style={{ border: '1px solid black' }} className="w-full px-4 py-3 rounded-md  bg-white text-gray-800 " />
+                        <input type="email" {...register('email')} placeholder="Eamil" style={{ border: '1px solid black' }} className="w-full px-4 py-3 rounded-md  bg-white text-gray-800 " required/>
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="password" className="block text-gray-800">Password</label>
-                        <input type="password" {...register('password')} style={{ border: '1px solid black' }} placeholder="Password" className="w-full px-4 py-3 rounded-md  bg-white  text-gray-800 " />
+                        <input type="password" {...register('password')} style={{ border: '1px solid black' }} placeholder="Password" className="w-full px-4 py-3 rounded-md  bg-white  text-gray-800 " required/>
                         
                         <div className="flex justify-end text-xs text-gray-800">
                             <Link>Forgot Password?</Link>
