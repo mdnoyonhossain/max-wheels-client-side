@@ -17,7 +17,7 @@ const DashboardLayout = () => {
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content bg-gray-50 p-6">
                     <Outlet></Outlet>
-                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open Dashobard</label>
 
                 </div>
                 <div className="drawer-side">

@@ -22,6 +22,7 @@ const MyOrders = () => {
 
     return (
         <div className="overflow-x-auto">
+            <h3 className="mb-4 font-bold text-3xl">My Order</h3>
             <table className="table w-full">
                 <thead>
                     <tr>

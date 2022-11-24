@@ -25,7 +25,7 @@ const ProductCategory = () => {
 
     return (
         <div>
-            <h1 class="heading"> <span>Product</span> Category </h1>
+            <h1 className="heading"> <span>Product</span> Category </h1>
             <div className="flex items-center -mx-4 overflow-x-auto overflow-y-hidden sm:justify-center flex-nowrap bg-white text-black w-11/12 m-auto">
                 {
                     categorys.map(category => <Link key={category._id} href="#" className="flex items-center flex-shrink-0 px-5 py-3 space-x-2 border border-black text-black hover:text-white hover:bg-gray-800">
