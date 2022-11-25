@@ -21,16 +21,16 @@ const Navbar = () => {
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal p-0">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/blog">Blog</Link></li>
+                    <li className='mx-1 rounded'><Link to="/">Home</Link></li>
+                    <li className='mx-1 rounded'><Link to="/blog">Blog</Link></li>
                     {
                         user?.uid ?
                             <>
-                                <li><Link to="/dashboard">Dashboard</Link></li>
-                                <li><button onClick={userLogOut}>Signout</button></li>
+                                <li className='mx-1 rounded'><Link to="/dashboard">Dashboard</Link></li>
+                                <li className='mx-1 rounded'><button onClick={userLogOut}>Signout</button></li>
                             </>
                             :
-                            <li><Link to="/login">Login</Link></li>
+                            <li className='mx-1 rounded'><Link to="/login">Login</Link></li>
                     }
 
                 </ul>

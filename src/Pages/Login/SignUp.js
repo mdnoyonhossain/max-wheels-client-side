@@ -52,7 +52,7 @@ const SignUp = () => {
     }
 
     const saveUser = (name, email, role) => {
-        const user = {name, email, role};
+        const user = { name, email, role };
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -60,10 +60,10 @@ const SignUp = () => {
             },
             body: JSON.stringify(user)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
     }
 
 
@@ -87,9 +87,11 @@ const SignUp = () => {
 
                     </div>
 
-                    <div className='bg-gray-100 p-3 rounded'>
-                        <label htmlFor="">Create Seller Account Checked</label><br />
-                        <input type="checkbox" value='seller' {...register('role')} className="toggle bg-red-500" />
+                    <div className='bg-white p-3 rounded'>
+                        <input type="radio" id='buyer' name="radio-4" value='buyer' {...register('role')} className="radio radio-accent" checked style={{ border: '2px solid black' }} />
+                        <label htmlFor="buyer" className='m-5'>Buyer Account</label> <br />
+                        <input type="radio" id='seller' name="radio-4" value='seller' {...register('role')} className="radio radio-accent" style={{ border: '2px solid black' }} />
+                        <label htmlFor="seller" className='m-5'>Seller Account</label>
                     </div>
 
                     <button className="block w-full p-3 text-center rounded-sm text-white bg-accent">Register</button>

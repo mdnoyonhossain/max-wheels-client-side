@@ -20,15 +20,15 @@ const AllSeller = () => {
         fetch(`http://localhost:5000/users/${seller._id}`, {
             method: 'DELETE'
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.deletedCount > 0){
-                toast.success('Seller Deleting Successfully');
-                refetch()
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    toast.success('Seller Deleting Successfully');
+                    refetch()
+                }
+            })
     }
-    
+
 
     if (isLoading) {
         return <Loading></Loading>
@@ -55,7 +55,7 @@ const AllSeller = () => {
                             <td>{seller.email}</td>
                             <td>{seller.role}</td>
                             <td><label onClick={() => setDeletingSeller(seller)} htmlFor="seller-delete" className="btn btn-xs">Delete</label></td>
-                            
+
                         </tr>)
                     }
 
@@ -63,18 +63,18 @@ const AllSeller = () => {
             </table>
             {
                 deleteingSeller && <>
-                <input type="checkbox" id="seller-delete" className="modal-toggle" />
-            <div className="modal">
-                <div className="modal-box">
-                    <h3 className="font-bold text-lg">{deleteingSeller.name}</h3>
-                    <p className="py-4"><b>Seller Email:</b> {deleteingSeller.email}</p>
-                    <p className=" text-2xl text-orange-500">Are you Sure Delete Seller</p>
-                    <div className="modal-action">
-                        <label onClick={() => handleSellerDelete(deleteingSeller)} htmlFor="seller-delete" className="btn bg-orange-500">Delete</label>
-                        <label htmlFor="seller-delete" className="btn bg-red-500">Cancel</label>
+                    <input type="checkbox" id="seller-delete" className="modal-toggle" />
+                    <div className="modal">
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg">{deleteingSeller.name}</h3>
+                            <p className="py-4"><b>Seller Email:</b> {deleteingSeller.email}</p>
+                            <p className=" text-2xl text-orange-500">Are you Sure Delete Seller</p>
+                            <div className="modal-action">
+                                <label onClick={() => handleSellerDelete(deleteingSeller)} htmlFor="seller-delete" className="btn bg-orange-500">Delete</label>
+                                <label htmlFor="seller-delete" className="btn bg-red-500">Cancel</label>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
                 </>
             }
         </div>
