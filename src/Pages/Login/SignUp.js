@@ -13,13 +13,11 @@ const SignUp = () => {
     const from = location?.state?.from?.pathname || '/';
 
     const handleSignUp = data => {
-        console.log(data);
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 userNameUpdate(data.name);
                 saveUser(data.name, data.email, data.role)
-                console.log(user);
                 navigate(from, { replace: true })
                 toast.success('SignUp Successfully')
             })

@@ -16,12 +16,10 @@ const Login = () => {
         userSingIn(data.email, data.password)
         .then(result => {
             const user = result.user;
-            console.log(user);
             navigate(from, {replace: true})
             toast.success('Login Successfully.')
         })
         .catch(error => {
-            console.log(error);
             toast.error(error.message)
         })
     }
@@ -30,7 +28,6 @@ const Login = () => {
         googleSignInUser()
         .then(result => {
             const user = result.user;
-            console.log(user);
             toast.success('Google Signin Successfully')
         })
         .catch(error => {

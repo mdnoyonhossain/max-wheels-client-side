@@ -16,7 +16,6 @@ const AllBuyer = () => {
     });
 
     const handleBuyerDelete = buyer => {
-        console.log(buyer._id);
         fetch(`http://localhost:5000/users/${buyer._id}`, {
             method: 'DELETE'
         })
@@ -64,8 +63,8 @@ const AllBuyer = () => {
                     <input type="checkbox" id="buyer-delete" className="modal-toggle" />
                     <div className="modal">
                         <div className="modal-box">
-                            <h3 className="font-bold text-lg">{buyerDelete.name}</h3>
-                            <p className="py-4"><b>Seller Email:</b> {buyerDelete.email}</p>
+                            <h3 className="font-bold text-lg">User Name: {buyerDelete.name}</h3>
+                            <p className="py-4"><b>Buyer Email:</b> {buyerDelete.email}</p>
                             <p className=" text-2xl text-orange-500">Are you Sure Delete Seller</p>
                             <div className="modal-action">
                                 <label onClick={() => handleBuyerDelete(buyerDelete)}  htmlFor="buyer-delete" className="btn bg-orange-500">Delete</label>
