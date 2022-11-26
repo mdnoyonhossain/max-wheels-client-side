@@ -2,8 +2,8 @@
 Car Reseal High Quality Appliances at Extremely.
 
 ## Live Link
-Hosted in Max Wheels Application -> [Max Wheels]()
-Hosted in Max Wheels Server Side Application -> [Max Wheels]()
+Hosted in Max Wheels Application -> [Max Wheels](https://maxwheels-2b45b.web.app)
+Hosted in Max Wheels Server Side Application -> [Max Wheels](https://maxwheels-server.vercel.app)
 
 
 ## Application Build
@@ -17,6 +17,6 @@ Hosted in Max Wheels Server Side Application -> [Max Wheels]()
 8. JWT Token
 9. Dashboard
 
-## IMPORTANT Access
+## IMPORTANT ACCESS
 adminEmail: admin@gmail.com
 adminPassword: 123456

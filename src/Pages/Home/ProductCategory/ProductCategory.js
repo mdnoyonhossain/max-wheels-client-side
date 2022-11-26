@@ -6,7 +6,7 @@ const ProductCategory = () => {
     const [productCar, setProductCar] = useState([]);
     
     useEffect(() => {
-        fetch('http://localhost:5000/productCategory')
+        fetch('https://maxwheels-server.vercel.app/productCategory')
             .then(res => res.json())
             .then(data => {
                 setProductCar(data)

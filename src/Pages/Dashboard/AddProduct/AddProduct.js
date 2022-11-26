@@ -36,7 +36,7 @@ const AddProduct = () => {
                         sellername: user?.displayName,
                         email: user?.email
                     }
-                    fetch('http://localhost:5000/productCategory', {
+                    fetch('https://maxwheels-server.vercel.app/productCategory', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -57,7 +57,7 @@ const AddProduct = () => {
     const { data: category = [] } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/category');
+            const res = await fetch('https://maxwheels-server.vercel.app/category');
             const data = await res.json();
             return data;
         }

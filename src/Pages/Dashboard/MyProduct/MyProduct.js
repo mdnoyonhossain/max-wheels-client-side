@@ -10,14 +10,14 @@ const MyProduct = () => {
     const { data: productCategory = [], refetch } = useQuery({
         queryKey: ['productCategory'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/dashboard/productCategory?email=${user?.email}`);
+            const res = await fetch(`https://maxwheels-server.vercel.app/dashboard/productCategory?email=${user?.email}`);
             const data = await res.json();
             return data;
         }
     });
 
     const handlePorductAvailable = id => {
-        fetch(`http://localhost:5000/available/admin/${id}`, {
+        fetch(`https://maxwheels-server.vercel.app/available/admin/${id}`, {
             method: 'PUT'
         })
         .then(res => res.json())
@@ -30,7 +30,7 @@ const MyProduct = () => {
     }
 
     const handlePorductAdvertise = id => {
-        fetch(`http://localhost:5000/advertise/admin/${id}`, {
+        fetch(`https://maxwheels-server.vercel.app/advertise/admin/${id}`, {
             method: 'PUT'
         })
         .then(res => res.json())
@@ -43,7 +43,7 @@ const MyProduct = () => {
     }
 
     const handleMyProductDelete = product => {
-        fetch(`http://localhost:5000/productCategory/${product._id}`, {
+        fetch(`https://maxwheels-server.vercel.app/productCategory/${product._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

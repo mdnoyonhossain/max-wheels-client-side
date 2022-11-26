@@ -8,7 +8,7 @@ const ProductReported = () => {
     const { data: reportToAdmin = [], refetch } = useQuery({
         queryKey: ['reportadmin'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/reportadmin')
+            const res = await fetch('https://maxwheels-server.vercel.app/reportadmin')
             const data = res.json();
             return data;
         }
@@ -16,7 +16,7 @@ const ProductReported = () => {
 
     const handleReportProduct = report => {
         console.log(report._id);
-        fetch(`http://localhost:5000/report/${report._id}`, {
+        fetch(`https://maxwheels-server.vercel.app/report/${report._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

@@ -44,7 +44,7 @@ const router = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <PrivateRoutes><CategoryDetails></CategoryDetails></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/productCategory/${params.id}`)
+                loader: ({ params }) => fetch(`https://maxwheels-server.vercel.app/productCategory/${params.id}`)
             }
 
         ]

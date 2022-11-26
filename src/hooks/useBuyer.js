@@ -4,7 +4,7 @@ const useBuyer = email => {
     const [isBuyer, setIsBuyer] = useState(false);
     const [isBuyerLoading, setIsBuyerLoading] = useState(true)
     useEffect( () => {
-        fetch(`http://localhost:5000/user/buyer/${email}`)
+        fetch(`https://maxwheels-server.vercel.app/user/buyer/${email}`)
         .then(res => res.json())
         .then(data => {
             setIsBuyer(data.isBuyer);

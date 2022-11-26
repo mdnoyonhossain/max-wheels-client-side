@@ -6,7 +6,7 @@ const Advatise = () => {
     const { data: productCategory = [] } = useQuery({
         queryKey: ['productCategory'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/productCategory');
+            const res = await fetch('https://maxwheels-server.vercel.app/productCategory');
             const data = await res.json();
             return data;
         }

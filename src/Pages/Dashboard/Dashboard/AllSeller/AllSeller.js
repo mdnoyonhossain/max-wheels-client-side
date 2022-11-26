@@ -8,7 +8,7 @@ const AllSeller = () => {
     const { data: allSeller = [], isLoading, refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users/?email=seller')
+            const res = await fetch('https://maxwheels-server.vercel.app/users/?email=seller')
             const data = await res.json();
             return data;
         }
@@ -16,7 +16,7 @@ const AllSeller = () => {
 
 
     const handleSellerDelete = seller => {
-        fetch(`http://localhost:5000/users/${seller._id}`, {
+        fetch(`https://maxwheels-server.vercel.app/users/${seller._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -29,7 +29,7 @@ const AllSeller = () => {
     }
 
     const handleUserVerified = (verified) => {
-        fetch(`http://localhost:5000/user/verified/${verified._id}`, {
+        fetch(`https://maxwheels-server.vercel.app/user/verified/${verified._id}`, {
             method: 'PUT'
         })
         .then(res => res.json())

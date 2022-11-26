@@ -26,7 +26,7 @@ const BookModal = ({categoryDetails}) => {
             picture: categoryDetails.picture
         }
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://maxwheels-server.vercel.app/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

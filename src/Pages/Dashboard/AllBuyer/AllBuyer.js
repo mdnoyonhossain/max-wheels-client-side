@@ -9,14 +9,14 @@ const AllBuyer = () => {
     const { data: allbuyer = [], isLoading, refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users/?email=buyer');
+            const res = await fetch('https://maxwheels-server.vercel.app/users/?email=buyer');
             const data = await res.json();
             return data;
         }
     });
 
     const handleBuyerDelete = buyer => {
-        fetch(`http://localhost:5000/users/${buyer._id}`, {
+        fetch(`https://maxwheels-server.vercel.app/users/${buyer._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

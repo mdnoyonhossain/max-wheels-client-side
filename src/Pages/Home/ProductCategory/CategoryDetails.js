@@ -20,7 +20,7 @@ const CategoryDetails = () => {
             sellerName: seller,
         }
         
-        fetch('http://localhost:5000/reportadmin', {
+        fetch('https://maxwheels-server.vercel.app/reportadmin', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
