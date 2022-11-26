@@ -21,7 +21,7 @@ const Navbar = () => {
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal p-0">
-                    <li className='mx-1 rounded'><Link to="/">Home</Link></li>
+                    {/* <li className='mx-1 rounded'><Link to="/">Home</Link></li> */}
                     <li className='mx-1 rounded'><Link to="/blog">Blog</Link></li>
                     {
                         user?.uid ?

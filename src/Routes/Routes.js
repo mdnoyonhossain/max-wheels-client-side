@@ -3,13 +3,13 @@ import Blog from "../Pages/Blog/Blog";
 import AddProduct from "../Pages/Dashboard/AddProduct/AddProduct";
 import AllBuyer from "../Pages/Dashboard/AllBuyer/AllBuyer";
 import AllSeller from "../Pages/Dashboard/Dashboard/AllSeller/AllSeller";
-import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders";
 import MyProduct from "../Pages/Dashboard/MyProduct/MyProduct";
 import CategoryDetails from "../Pages/Home/ProductCategory/CategoryDetails";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Login/SignUp";
 import AdminRoutes from "./AdminRoutes";
+import BuyerRoute from "./BuyerRoute";
 import PrivateRoutes from "./PrivateRoutes";
 import SellerRoute from "./SellerRoute";
 
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <PrivateRoutes><CategoryDetails></CategoryDetails></PrivateRoutes>,
-                loader: ({params}) => fetch(`http://localhost:5000/productCategory/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/productCategory/${params.id}`)
             }
 
         ]
@@ -54,8 +54,8 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
-                path: '/dashboard',
-                element: <MyOrders></MyOrders>
+                path: '/dashboard/myorder',
+                element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
             },
             {
                 path: '/dashboard/addaproduct',

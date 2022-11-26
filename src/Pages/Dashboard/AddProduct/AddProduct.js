@@ -33,7 +33,8 @@ const AddProduct = () => {
                         useyear: data.useyear,
                         desc: data.description,
                         phone: data.phone,
-                        sellername: user?.displayName
+                        sellername: user?.displayName,
+                        email: user?.email
                     }
                     fetch('http://localhost:5000/productCategory', {
                         method: 'POST',
@@ -72,16 +73,16 @@ const AddProduct = () => {
                     <fieldset className="w-full space-y-1 dark:text-gray-100">
                         <label htmlFor="files" className="block text-sm font-medium">Product Image</label>
                         <div className="flex">
-                            <input type="file" {...register('image')} className="px-2 py-12 border-2 border-dashed rounded-md dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800" />
+                            <input type="file" {...register('image')} className="px-2 py-12 border-2 border-dashed rounded-md dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800" required/>
                         </div>
                     </fieldset>
                     <div>
                         <label className="block mb-2 text-sm">Product Name</label>
-                        <input type="text" {...register('name')} className="w-full px-3 py-2 border rounded-md border-gray-700 text-black" style={{ border: '1px solid green' }} />
+                        <input type="text" {...register('name')} className="w-full px-3 py-2 border rounded-md border-gray-700 text-black" style={{ border: '1px solid green' }} required/>
                     </div>
                     <div>
                         <label className="block mb-2 text-sm">Category</label>
-                        <select {...register('category')} className="select select-secondary w-full" style={{border: '1px solid green'}}>
+                        <select {...register('category')} className="select select-secondary w-full" style={{border: '1px solid green'}} required>
                             {
                                 category.map(cat => <option key={cat._id}>{cat.category}</option>)
                             }
@@ -89,23 +90,23 @@ const AddProduct = () => {
                     </div>
                     <div>
                         <label className="block mb-2 text-sm">Sell Price</label>
-                        <input type="text" {...register('price')} className="w-full px-3 py-2 border rounded-md border-gray-700 text-black" style={{ border: '1px solid green' }} />
+                        <input type="text" {...register('price')} className="w-full px-3 py-2 border rounded-md border-gray-700 text-black" style={{ border: '1px solid green' }} required/>
                     </div>
                     <div>
                         <label className="block mb-2 text-sm">Location</label>
-                        <input type="text" {...register('location')} className="w-full px-3 py-2 border rounded-md border-gray-700 text-black" style={{ border: '1px solid green' }} />
+                        <input type="text" {...register('location')} className="w-full px-3 py-2 border rounded-md border-gray-700 text-black" style={{ border: '1px solid green' }} required/>
                     </div>
                     <div>
                         <label className="block mb-2 text-sm">Orginal Price</label>
-                        <input type="text" {...register('orginalprice')} className="w-full px-3 py-2 border rounded-md border-gray-700 text-black" style={{ border: '1px solid green' }} />
+                        <input type="text" {...register('orginalprice')} className="w-full px-3 py-2 border rounded-md border-gray-700 text-black" style={{ border: '1px solid green' }} required/>
                     </div>
                     <div>
                         <label className="block mb-2 text-sm">Use Year</label>
-                        <input type="text" {...register('useyear')} className="w-full px-3 py-2 border rounded-md border-gray-700 text-black" style={{ border: '1px solid green' }} />
+                        <input type="text" {...register('useyear')} className="w-full px-3 py-2 border rounded-md border-gray-700 text-black" style={{ border: '1px solid green' }} required/>
                     </div>
                     <div>
                         <label className="block mb-2 text-sm">Phone Number</label>
-                        <input type="text" {...register('phone')}  className="w-full px-3 py-2 border rounded-md border-gray-700 text-black" style={{ border: '1px solid green' }} />
+                        <input type="text" {...register('phone')}  className="w-full px-3 py-2 border rounded-md border-gray-700 text-black" style={{ border: '1px solid green' }} required/>
                     </div>
                     <div>
                         <label className="block mb-2 text-sm">Description</label>

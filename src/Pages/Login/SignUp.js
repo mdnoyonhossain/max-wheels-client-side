@@ -15,7 +15,6 @@ const SignUp = () => {
     const handleSignUp = data => {
         createUser(data.email, data.password)
             .then(result => {
-                const user = result.user;
                 userNameUpdate(data.name);
                 saveUser(data.name, data.email, data.role)
                 navigate(from, { replace: true })
@@ -37,12 +36,14 @@ const SignUp = () => {
             })
     }
 
-    const userGoogleSignIn = () => {
+    const userGoogleSignIn = (data) => {
         googleSignInUser()
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 toast.success('Google Signin Successfully')
+                saveUser(user?.displayName, user?.email, data.role)
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 toast.error(error.message)
@@ -63,8 +64,6 @@ const SignUp = () => {
                 console.log(data);
             })
     }
-
-
 
     return (
         <div className='flex justify-center my-20'>
@@ -100,7 +99,7 @@ const SignUp = () => {
                     <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
                 </div>
                 <div className="flex justify-center space-x-4">
-                    <button onClick={userGoogleSignIn} className="block w-full p-3 text-center rounded text-white btn btn-outline btn-accent" style={{ border: '1px solid green' }}>CONTINUE WITH GOOGLE</button>
+                    <button onClick={handleSubmit(userGoogleSignIn)} className="block w-full p-3 text-center rounded text-white btn btn-outline btn-accent" style={{ border: '1px solid green' }}>CONTINUE WITH GOOGLE</button>
                 </div>
                 <p className="text-xs text-center sm:px-6 text-gray-800">Already have an account
                     <Link to="/login" className="text-primary font-bold"> Login</Link>
