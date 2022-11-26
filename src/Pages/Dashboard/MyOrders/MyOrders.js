@@ -27,6 +27,7 @@ const MyOrders = () => {
                 <thead>
                     <tr>
                         <th></th>
+                        <th>Product Image</th>
                         <th>Product Name</th>
                         <th>Email</th>
                         <th>Price</th>
@@ -37,6 +38,13 @@ const MyOrders = () => {
                     {
                         bookings.map((booking, i) => <tr key={booking._id} className="hover">
                             <th>{i + 1}</th>
+                            <th>
+                                <div className="avatar">
+                                    <div className="w-16 rounded">
+                                        <img src={booking.picture} alt="" />
+                                    </div>
+                                </div>
+                            </th>
                             <th>{booking.productName}</th>
                             <td>{booking.userEmail}</td>
                             <td>${booking.productPrice}</td>

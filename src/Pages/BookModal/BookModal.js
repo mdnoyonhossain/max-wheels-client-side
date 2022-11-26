@@ -22,7 +22,8 @@ const BookModal = ({categoryDetails}) => {
             userEmail,
             productPrice,
             location,
-            phone
+            phone,
+            picture: categoryDetails.picture
         }
 
         fetch('http://localhost:5000/booking', {

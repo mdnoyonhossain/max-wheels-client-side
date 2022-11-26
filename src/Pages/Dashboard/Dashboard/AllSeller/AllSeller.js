@@ -28,6 +28,18 @@ const AllSeller = () => {
             })
     }
 
+    const handleUserVerified = (verified) => {
+        fetch(`http://localhost:5000/user/verified/${verified._id}`, {
+            method: 'PUT'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.acknowledged){
+                toast.success('Seller is verified')
+            }
+        })
+    }
+
 
     if (isLoading) {
         return <Loading></Loading>
@@ -42,6 +54,8 @@ const AllSeller = () => {
                         <th></th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Verified</th>
+                        <th>unVerified</th>
                         <th>Role</th>
                         <th>Action</th>
                     </tr>
@@ -52,6 +66,8 @@ const AllSeller = () => {
                             <th>{i + 1}</th>
                             <td>{seller.name}</td>
                             <td>{seller.email}</td>
+                            <td><button onClick={() => handleUserVerified(seller)} className='btn btn-xs bg-green-500'>verified</button></td>
+                            <td><button className='btn btn-xs bg-red-500'>unverified</button></td>
                             <td>{seller.role}</td>
                             <td><label onClick={() => setDeletingSeller(seller)} htmlFor="seller-delete" className="btn btn-xs">Delete</label></td>
 

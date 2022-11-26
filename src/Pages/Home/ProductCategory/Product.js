@@ -15,7 +15,7 @@ const Product = ({ car }) => {
                 </div>
                 <p><span className='text-[#37CDBE]'>Seller Name:</span> {sellername}</p>
                 <div className="card-actions justify-center mt-4">
-                    <Link to={`/category/${_id}`}><button className="btn bg-[#37CDBE]">Category Details</button></Link>
+                    <Link to={`/category/${_id}`}><button className="btn bg-[#37CDBE]">Product Details</button></Link>
                 </div>
             </div>
         </div>

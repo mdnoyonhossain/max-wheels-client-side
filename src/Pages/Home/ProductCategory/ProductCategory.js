@@ -1,25 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Loading from '../../Shared/Loading/Loading';
 import Product from './Product';
 
 const ProductCategory = () => {
     const [productCar, setProductCar] = useState([]);
-    const [loading, setLoading] = useState(true)
-
+    
     useEffect(() => {
         fetch('http://localhost:5000/productCategory')
             .then(res => res.json())
             .then(data => {
                 setProductCar(data)
-                setLoading(false)
             })
-    }, [loading]);
+    }, []);
 
-    if (loading) {
-        return <Loading></Loading>
-    }
-
+    
     const filterResult = item => {
         const result = productCar.filter(cat => cat.category === item)
         return setProductCar(result)
