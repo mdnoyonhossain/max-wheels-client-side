@@ -21,7 +21,7 @@ const AddProduct = () => {
         const fromData = new FormData();
         fromData.append('image', image);
 
-        fetch(`https://api.imgbb.com/1/upload?key=57fea7296aab6a4dfc6799dcc38e3a78`, {
+        fetch(`https://api.imgbb.com/1/upload?key=${process.env.REACT_IMAGE_KEY}`, {
             method: 'POST',
             body: fromData
         })
