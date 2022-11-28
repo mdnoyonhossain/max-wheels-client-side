@@ -23,14 +23,32 @@ const Login = () => {
             })
     }
 
-    const userGoogleSignIn = () => {
+    const userGoogleSignIn = (data) => {
         googleSignInUser()
             .then(result => {
+                const user = result.user;
+                console.log(user);
                 toast.success('Google Signin Successfully')
+                saveUser(user?.displayName, user?.email, data.role)
                 navigate(from, { replace: true })
             })
             .catch(error => {
                 toast.error(error.message)
+            })
+    }
+
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role };
+        fetch('https://maxwheels-server.vercel.app/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
             })
     }
 
@@ -46,7 +64,7 @@ const Login = () => {
                     <div className="space-y-1 text-sm">
                         <label htmlFor="password" className="block text-gray-800">Password</label>
                         <input type="password" {...register('password')} style={{ border: '1px solid black' }} placeholder="Password" className="w-full px-4 py-3 rounded-md  bg-white  text-gray-800 " required />
-
+                        <input type="text" value="buyer" {...register('role')} hidden />
                         <div className="flex justify-end text-xs text-gray-800">
                             <Link>Forgot Password?</Link>
                         </div>

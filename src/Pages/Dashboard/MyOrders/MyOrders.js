@@ -32,6 +32,7 @@ const MyOrders = () => {
                         <th>Email</th>
                         <th>Price</th>
                         <th>Meet Location</th>
+                        <th>Payment</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,6 +50,7 @@ const MyOrders = () => {
                             <td>{booking.userEmail}</td>
                             <td>${booking.productPrice}</td>
                             <td>{booking.location}</td>
+                            <td><button className='btn btn-xs'>Pay</button></td>
                         </tr>)
                     }
                 </tbody>

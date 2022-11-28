@@ -4,12 +4,14 @@ import Product from './Product';
 
 const ProductCategory = () => {
     const [productCar, setProductCar] = useState([]);
+    const [productLoading, setProductLoading] = useState(true)
     
     useEffect(() => {
         fetch('https://maxwheels-server.vercel.app/productCategory')
             .then(res => res.json())
             .then(data => {
                 setProductCar(data)
+                setProductLoading(false)
             })
     }, []);
 
@@ -18,8 +20,7 @@ const ProductCategory = () => {
         const result = productCar.filter(cat => cat.category === item)
         return setProductCar(result)
     }
-
-
+  
     return (
         <div>
             <h1 className="heading"> <span>Product</span> Category </h1>
@@ -50,7 +51,7 @@ const ProductCategory = () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8'>
                 {
-                    productCar.map(car => <Product key={car._id} car={car}></Product>)
+                    productCar.map(car => <Product key={car._id} car={car} productLoading={productLoading}></Product>)
                 }
             </div>
         </div>
